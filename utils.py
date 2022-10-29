@@ -1,15 +1,22 @@
 import os
 import zipfile
 
-def get_zip_filename():
+def get_zip_filenames():
     filenames = os.listdir()
+    zips = []
     
     for f_name in filenames:
         if '.zip' in f_name:
-            zip_file = f_name
+            zips.append(f_name)
 
-    return zip_file
-    
+    return zips
+
+
+def get_zip_id(filename):
+    zip_id = filename.split()[-1] # grabs 03312022.zip
+    zip_id = zip_id[:-4] # grabs 03312022
+    return zip_id
+
 
 def unzip(zip_file, destination_path):
     cwd = os.getcwd()
@@ -20,7 +27,7 @@ def unzip(zip_file, destination_path):
         zip_ref.extractall(data_dir)
 
 
-# rename files clean_dir() = main funciton. all other are helpers
+# functions below: helper functions for clean_dir()
 def clean_element(el):
     # get substring between ()
     start = el.find('(')
@@ -69,8 +76,7 @@ def make_new_names(dir):
     return old_new_pairs
 
 def clean_dir(dir):
-    # delete readme
-    os.remove(f'{dir}/Readme.txt')
+    os.remove(f'{dir}/Readme.txt') # delete readme
     names = make_new_names(dir)
     for old, new in names:
         os.rename(f'{dir}/{old}', f'{dir}/{new}')

@@ -4,7 +4,7 @@ from selenium.webdriver.support.ui import Select
 import time
 import os
 
-def download_zip():
+def download_zips(num_quarterly_periods):
     cwd = os.getcwd()
     try:
         options = webdriver.ChromeOptions()
@@ -17,16 +17,18 @@ def download_zip():
         type_selection = driver.find_element(By.XPATH, '//*[@id="ListBox1"]/option[1]')
         type_selection.click() # Call Reports -- single period
 
-        period_selector = Select( driver.find_element(By.XPATH, '//*[@id="DatesDropDownList"]') )
-        periods_options = period_selector.options # returns a list of WebElements. 
-        period = period_selector.select_by_index(0) # first option in selector
+        # iterate throught the selctions dropdown
+        for i in range(num_quarterly_periods): 
+                period_selector = Select( driver.find_element(By.XPATH, '//*[@id="DatesDropDownList"]') )
+                period = period_selector.select_by_index(i) 
 
-        download_button = driver.find_element(By.XPATH, '//*[@id="Download_0"]')
-        download_button.click()
+                download_button = driver.find_element(By.XPATH, '//*[@id="Download_0"]')
+                download_button.click()
 
-        time.sleep(5)
+                time.sleep(2)
+
+        time.sleep(10)
         driver.close()
 
     except:
         raise Exception('issue scraping data')
-    
