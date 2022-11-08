@@ -1,1 +1,4 @@
 env/
+convert_to_csv_module/__pycache__/
+convert_to_tables_module/__pycache__/
+extract_data_module/__pycache__/
