@@ -5,6 +5,7 @@ from convert_to_csv_module.main import convert_txt_files_to_csv
 from convert_to_tables_module.main import convert_csv_to_tables
 
 def main(num_quarterly_periods):
+    num_quarterly_periods = int(num_quarterly_periods)
     print(f'downloading the data from the last {num_quarterly_periods} quarterly periods...')    
     get_data_folder(num_quarterly_periods)
     print('converting downloaded .txt files to .csv fromat...')    
