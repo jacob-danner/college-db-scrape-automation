@@ -6,16 +6,15 @@ create virutalenv<br>
 pip install -r requirements.txt<br>
 
 <h2>Instructions:</h2>
-open main.py<br>
-set desired number of quarterly periods to download parameter and save<br>
-run main.py
-
-<h2>Output:</h2>
-running main.py will create a directory 'data'<br>
-data will contain a directory for each quarterly period<br>
-each period directory is named by date and contains .txt files<br>
-
-<h2>Potential Issues:</h2>
-If the chromedriver closes before all .zip files are downloaded from the ffiec page, it won't work.<br>
-There is a built in time.sleep(10) in scrape.py to help prevent this.<br>
-If you have a slower internet connection, increase the time.sleep parameter to allow the driver more time to download .zip files.
+navigate to the directory where repo was cloned. \
+this script has a comman line interface \
+specify the number of quarterly periods you want to download in the parameters \
+\
+Example Use: \
+say I want to download the most recent quarter from the ffiec page; num_quarterly_downloads would be one \
+from the comman line run: <code>python glue.py 1</code> \
+\
+Output: \
+Running this script will output a directory, named tables \
+tables contains a folder for each csv file \
+within each csv_folder, there are the sql ready tables 

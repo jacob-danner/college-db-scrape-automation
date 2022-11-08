@@ -11,7 +11,7 @@ def download_zips(num_quarterly_periods):
         prefs = {'download.default_directory': cwd}
         options.add_experimental_option('prefs', prefs)
 
-        driver = webdriver.Chrome(executable_path='./chromedriver', chrome_options=options)
+        driver = webdriver.Chrome(executable_path='./extract_data_module/chromedriver', chrome_options=options)
         driver.get('https://cdr.ffiec.gov/public/PWS/DownloadBulkData.aspx')
 
         type_selection = driver.find_element(By.XPATH, '//*[@id="ListBox1"]/option[1]')
